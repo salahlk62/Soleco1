@@ -1,16 +1,15 @@
 import { Router } from 'express';
-import authRouter from './auth.router';
-import funnelRouter from './funnel.router';
-import checkoutRouter from './checkout.router';
-import orderRouter from './order.router';
+import { authRouter } from './auth.router';
+import { funnelRouter } from './funnel.router';
+import { orderRouter } from './order.router';
+import { checkoutRouter } from './checkout.router';
 
 const router = Router();
 
-router.use('/api/v1', authRouter);
-router.use('/api/v1', funnelRouter);
-router.use('/api/v1', checkoutRouter);
-router.use('/api/v1', orderRouter);
-
-router.get('/health', (_req, res) => res.status(200).json({ status: 'ok' }));
+// Routes Prefix
+router.use('/auth', authRouter);         // /api/v1/auth
+router.use('/funnel', funnelRouter);     // /api/v1/funnel
+router.use('/orders', orderRouter);      // /api/v1/orders
+router.use('/checkout', checkoutRouter); // /api/v1/checkout
 
 export default router;
