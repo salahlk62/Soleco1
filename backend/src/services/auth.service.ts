@@ -11,12 +11,22 @@ export class AuthError extends Error {
 }
 
 function signTokens(userId: string, role: UserRole) {
-  const accessToken = jwt.sign({ userId, role }, env.jwtAccessSecret, {
-    expiresIn: env.jwtAccessExpiresIn,
-  });
-  const refreshToken = jwt.sign({ userId, role }, env.jwtRefreshSecret, {
-    expiresIn: env.jwtRefreshExpiresIn,
-  });
+  const accessToken = jwt.sign(
+    { userId, role },
+    env.jwtAccessSecret as jwt.Secret,
+    {
+      expiresIn: env.jwtAccessExpiresIn as jwt.SignOptions['expiresIn'],
+    }
+  );
+
+  const refreshToken = jwt.sign(
+    { userId, role },
+    env.jwtRefreshSecret as jwt.Secret,
+    {
+      expiresIn: env.jwtRefreshExpiresIn as jwt.SignOptions['expiresIn'],
+    }
+  );
+
   return { accessToken, refreshToken };
 }
 
