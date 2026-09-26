@@ -12,8 +12,9 @@ dependencies:
   flutter_bloc: ^8.1.6
   equatable: ^2.0.5
   dio: ^5.4.3
-  firebase_messaging: ^15.0.0
-  flutter_local_notifications: ^17.2.2
+  # firebase_messaging و flutter_local_notifications معطّلة مؤقتاً في هذه النسخة
+  # الأولية لأنها تتطلب إعداد مشروع Firebase (google-services.json) قبل البناء.
+  # أعد إضافتها عند تفعيل الإشعارات (راجع core/services/notification_service.dart).
 
 dev_dependencies:
   flutter_test:
